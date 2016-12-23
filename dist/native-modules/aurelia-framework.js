@@ -64,8 +64,8 @@ export var Aurelia = function () {
   Aurelia.prototype.enhance = function enhance() {
     var _this2 = this;
 
-    var bindingContext = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-    var applicationHost = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+    var bindingContext = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var applicationHost = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
     this._configureHost(applicationHost || DOM.querySelectorAll('body')[0]);
 
@@ -81,8 +81,8 @@ export var Aurelia = function () {
   Aurelia.prototype.setRoot = function setRoot() {
     var _this3 = this;
 
-    var root = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-    var applicationHost = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+    var root = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var applicationHost = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
     var instruction = {};
 

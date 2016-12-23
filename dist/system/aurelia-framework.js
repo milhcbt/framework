@@ -5,7 +5,7 @@ System.register(['aurelia-logging', 'aurelia-dependency-injection', 'aurelia-loa
 
   var TheLogManager, Container, Loader, BindingLanguage, ViewSlot, ViewResources, TemplatingEngine, CompositionTransaction, ViewEngine, DOM, PLATFORM, relativeToFile, join, Aurelia, logger, extPattern, FrameworkConfiguration, LogManager;
 
-
+  
 
   function preventActionlessFormSubmit() {
     DOM.addEventListener('submit', function (evt) {
@@ -207,7 +207,7 @@ System.register(['aurelia-logging', 'aurelia-dependency-injection', 'aurelia-loa
     execute: function () {
       _export('Aurelia', Aurelia = function () {
         function Aurelia(loader, container, resources) {
-
+          
 
           this.loader = loader || new PLATFORM.Loader();
           this.container = container || new Container().makeGlobal();
@@ -251,8 +251,8 @@ System.register(['aurelia-logging', 'aurelia-dependency-injection', 'aurelia-loa
         Aurelia.prototype.enhance = function enhance() {
           var _this2 = this;
 
-          var bindingContext = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-          var applicationHost = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+          var bindingContext = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+          var applicationHost = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
           this._configureHost(applicationHost || DOM.querySelectorAll('body')[0]);
 
@@ -268,8 +268,8 @@ System.register(['aurelia-logging', 'aurelia-dependency-injection', 'aurelia-loa
         Aurelia.prototype.setRoot = function setRoot() {
           var _this3 = this;
 
-          var root = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-          var applicationHost = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+          var root = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+          var applicationHost = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
           var instruction = {};
 
@@ -347,7 +347,7 @@ System.register(['aurelia-logging', 'aurelia-dependency-injection', 'aurelia-loa
         function FrameworkConfiguration(aurelia) {
           var _this4 = this;
 
-
+          
 
           this.aurelia = aurelia;
           this.container = aurelia.container;

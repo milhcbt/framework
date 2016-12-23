@@ -10,11 +10,11 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jspm', 'jasmine'],
+    frameworks: ['jspm', 'jasmine','es6-shim'],
 
     jspm: {
       // Edit this to your needs
-      loadFiles: ['test/**/*.js'],
+      loadFiles: ['jspm_packages/system-polyfills.js','test/**/*.js'],
       serveFiles : ['src/**/*.js']
     },
 
@@ -49,7 +49,18 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress','html'],
+
+	 htmlReporter: {
+      outputFile: 'tests/units.html',
+            
+      // Optional 
+      pageTitle: 'Unit Tests',
+      subPageTitle: 'A sample project description',
+      groupSuites: true,
+      useCompactStyle: true,
+      useLegacyStyle: true
+    },
 
 
     // web server port
@@ -76,6 +87,26 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+	
+	customLaunchers: {
+      'PhantomJS_custom': {
+        base: 'PhantomJS',
+        options: {
+          windowName: 'my-window',
+          settings: {
+            webSecurityEnabled: false
+          },
+        },
+        flags: ['--load-images=true'],
+        debug: true
+      }
+    },
+ 
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom) 
+      exitOnResourceError: true
+    }
+	
   });
 };
